@@ -2,7 +2,7 @@
 module.exports=(https,searchUserByUsername,getUsersInRoom,uploadMessage)=>{
     const io= require('socket.io')(https,{
         cors:{
-            origin:"https://192.168.1.192:3000",
+            origin:process.env.CLIENT_URL,
         }
     });
     //necessary for handling the socket io disconnections, since the server only has access to the socket io when a user disconnects/ closes tab. used to emit user has disconnected to rooms that they were in
