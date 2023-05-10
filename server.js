@@ -10,11 +10,7 @@ app.use(cors({
 }));
 //used to turn server into https
 const fs=require('fs');
-const options={
-    key:fs.readFileSync('./192.168.1.192-key.pem'),
-    cert:fs.readFileSync('./192.168.1.192.pem')
-}
-const https=require('https').createServer(options,app);
+const http=require('http').createServer(app);
 //allows us to use req.body, access data sent by client
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
@@ -88,8 +84,8 @@ const deleteFromBucket=aws.deleteFromBucket;
 //uuid for naming profile pictures
 const { v4: uuidv4 } = require('uuid');
 //websocket implementation for chat
-const emitUpdateSocketRoom= require('./socket')(https,searchUserByUsername,dbExports.getUsersInRoom,dbExports.uploadMessage);
+const emitUpdateSocketRoom= require('./socket')(http,searchUserByUsername,dbExports.getUsersInRoom,dbExports.uploadMessage);
 //routes
 require('./routes')(app,checkValidLogin,checkValidRegistration,checkValidProfile,upload,updateProfilePicture,searchUserByInsertID,searchUserByUsername,createRoom,dbExports.createDirectRoom,joinRoom,leaveRoom,getRoomsJoined,dbExports.getMessagesInRoom,uploadToBucket,deleteFromBucket,uuidv4,emitUpdateSocketRoom,checkAboutMeBioValid,dbExports.updateAboutMeBio);
 
-https.listen(5000, console.log("listening on port 5000"));
+http.listen(5000, console.log("listening on port 5000"));
