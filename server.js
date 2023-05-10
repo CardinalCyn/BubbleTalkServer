@@ -87,5 +87,5 @@ const { v4: uuidv4 } = require('uuid');
 const emitUpdateSocketRoom= require('./socket')(http,searchUserByUsername,dbExports.getUsersInRoom,dbExports.uploadMessage);
 //routes
 require('./routes')(app,checkValidLogin,checkValidRegistration,checkValidProfile,upload,updateProfilePicture,searchUserByInsertID,searchUserByUsername,createRoom,dbExports.createDirectRoom,joinRoom,leaveRoom,getRoomsJoined,dbExports.getMessagesInRoom,uploadToBucket,deleteFromBucket,uuidv4,emitUpdateSocketRoom,checkAboutMeBioValid,dbExports.updateAboutMeBio);
-
-http.listen(0,'0.0.0.0', console.log("listening on port 5000"));
+var port = process.env.PORT || 5000;
+http.listen(port,'0.0.0.0', console.log("listening on port 5000"));
