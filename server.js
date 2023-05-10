@@ -4,7 +4,7 @@ const app=express();
 //cross origin, allows us to communicate w/ react frontend
 const cors=require('cors');
 app.use(cors({
-    origin:["https://192.168.1.192:3000"],
+    origin:[process.env.CLIENT_URL],
     methods:["GET","POST","DELETE"],
     credentials:true,
 }));
