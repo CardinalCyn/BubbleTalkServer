@@ -51,6 +51,9 @@ const store=new MySQLStore({
         }
     }
 },db);
+
+app.set("trust proxy", 1);
+
 app.use(session({
     name:process.env.SESSION_NAME,
     secret:process.env.SESSION_SECRET,
