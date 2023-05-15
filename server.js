@@ -9,7 +9,6 @@ app.use(cors({
     credentials:true,
 }));
 //used to turn server into https
-const fs=require('fs');
 const http=require('http').createServer(app);
 //allows us to use req.body, access data sent by client
 app.use(express.json());

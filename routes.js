@@ -21,8 +21,11 @@ module.exports=(app,checkValidLogin,checkValidRegistration,checkValidProfile,upl
                             req.session.cookie.expires=new Date(Date.now()+2*60*60*1000)
                         }
                         //saves the user data to the session cookie
+                        console.log(user);
                         req.session.user=user;
-                        req.session.save();
+                        req.session.save((err)=>{
+                            console.log(err);
+                        });
                         res.json({status:"userValid",username:username});
                     }
                 }catch(err){
