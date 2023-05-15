@@ -32,7 +32,7 @@ const store=new MySQLStore({
     checkExpirationInterval:9000,
     createDatabaseTable:true,
     schema:{
-        tableName:"Sessions",
+        tableName:"sessions",
         columnNames:{
             session_id:"session_id",
             expires:"expires",
