@@ -8,6 +8,17 @@ app.use(cors({
     methods:["GET","POST","DELETE"],
     credentials:true,
 }));
+
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", process.env.CLIENT_URL); // update to match the domain you will make the request from
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
+});
+
 //used to turn server into https
 const http=require('http').createServer(app);
 //allows us to use req.body, access data sent by client
