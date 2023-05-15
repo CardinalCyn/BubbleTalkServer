@@ -52,13 +52,13 @@ const store=new MySQLStore({
     }
 },db);
 
-app.set("trust proxy", 1);
+app.set("trust proxy", true);
 
 app.use(session({
     name:process.env.SESSION_NAME,
     secret:process.env.SESSION_SECRET,
-    resave:false,
-    saveUninitialized:false,
+    resave:true,
+    saveUninitialized:true,
     store:store,
     cookie:{
         secure:true,
