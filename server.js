@@ -40,7 +40,7 @@ var MySQLStore = require('express-mysql-session')(session);
 const store=new MySQLStore({
     expires: 14*24*60*60*1000,
     clearExpired: true,
-    checkExpirationInterval:9000,
+    checkExpirationInterval:900000,
     createDatabaseTable:true,
     schema:{
         tableName:"sessions",
