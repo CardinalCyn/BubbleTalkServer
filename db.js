@@ -10,6 +10,8 @@ const config={
     password:process.env.DB_PASSWORD,
     database:process.env.DB_DATABASE
 }
+
+const db=mysql.createPool(config);
 db.getConnection((error, connection) => {
   if (error) {
     console.error("Error connecting to the database:", error);
@@ -19,8 +21,6 @@ db.getConnection((error, connection) => {
     connection.release();
   }
 });
-
-const db=mysql.createPool(config);
 //given insertID, returns user info in db
 const searchUserByInsertID=(insertId)=>{
     return new Promise((resolve,reject)=>{
