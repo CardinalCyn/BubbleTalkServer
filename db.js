@@ -10,6 +10,15 @@ const config={
     password:process.env.DB_PASSWORD,
     database:process.env.DB_DATABASE
 }
+db.getConnection((error, connection) => {
+  if (error) {
+    console.error("Error connecting to the database:", error);
+  } else {
+    console.log("Successfully connected to the database!");
+    // Release the connection back to the pool
+    connection.release();
+  }
+});
 
 const db=mysql.createPool(config);
 //given insertID, returns user info in db
