@@ -72,7 +72,7 @@ const createUser=(email,username,hashedPassword,pfpLink,aboutMeBio)=>{
 //updates aboutmeBio of user given their username
 const updateAboutMeBio=(username,aboutMeBio)=>{
     return new Promise((resolve,reject)=>{
-        const updatePrefix="UPDATE userTable SET aboutMeBio = ? WHERE userUsername = ?";
+        const updatePrefix="UPDATE usertable SET aboutMeBio = ? WHERE userUsername = ?";
         const updateQuery=mysql.format(updatePrefix,[aboutMeBio,username]);
         db.query(updateQuery,async(err,result)=>{
             if(err) return reject(err);
@@ -83,7 +83,7 @@ const updateAboutMeBio=(username,aboutMeBio)=>{
 //updates profile picture of user given their username
 const updateProfilePicture=(username,profilePicturePath)=>{
     return new Promise((resolve,reject)=>{
-        const updatePrefix="UPDATE userTable SET userProfilePic= ? WHERE userUsername = ?";
+        const updatePrefix="UPDATE usertable SET userProfilePic= ? WHERE userUsername = ?";
         const updateQuery=mysql.format(updatePrefix,[profilePicturePath,username]);
         db.query(updateQuery,async(err,result)=>{
             if(err) return reject(err);
